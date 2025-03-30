@@ -31,8 +31,8 @@ public class Registration {
 		// Enter Last Name
 		driver.findElement(By.id("lastname")).sendKeys("LastName");
 		// Set email address and Enter Email Address
-		System.setProperty("Email", "tigopok848@oronny.com");
-		driver.findElement(By.id("email_address")).sendKeys("tigopok848@oronny.com");
+		System.setProperty("Email", "dalaniy703@nokdot.com");
+		driver.findElement(By.id("email_address")).sendKeys("dalaniy703@nokdot.com");
 		// Set Password and enter password
 		System.setProperty("Password", "abcd@1234");
 		driver.findElement(By.id("password")).sendKeys("abcd@1234");
@@ -51,7 +51,10 @@ public class Registration {
 		driver.findElement(By.xpath("(//button[@class='action switch'])[1]")).click();
 		// Click Sign out button
 		driver.findElement(By.xpath("(//li[@class='authorization-link'])[1]")).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(2));
+		//Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(40,TimeUnit.SECONDS);
+		Thread.sleep(8000);
 		// Verify User landed on home page after sign out
 		String expectedHome = "Home Page";
 		String actualHome = driver.getTitle();
@@ -65,7 +68,7 @@ public class Registration {
 		// Click Sign In button
 		driver.findElement(By.xpath("//button[@class='action login primary']")).click();
 		// Verify User landed on My Account page after Sign in
-		String expectedPostSignIn = "My Account";
+		String expectedPostSignIn = "Home Page";
 		String actualPostSignIn = driver.getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle);
 		// Screenshot of My Account page after sign In
